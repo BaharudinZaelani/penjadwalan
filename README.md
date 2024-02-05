@@ -1,7 +1,20 @@
+```PHP
+echo "Ini adalah project skripsi :3...";
+```
 ## About My Project
-``
+```bash
 IMPLEMENTASI ALGORITMA GENETIKA DALAM PEMBANGUNAN SISTEM OTOMATISASI PENJADWALAN MATAKULIAH BERBASIS WEB DENGAN MENGGUNAKAN FRAMEWORK LARAVEL 10 
-``
+```
+**Tech and Language**
+| Name          | Function      | Official Web |
+| ------------- | ------------- | ------------- |
+| MySql | Database untuk website | <a href="https://www.mysql.com/">https://www.mysql.com/</a> |
+| NPM | Javascript Package manager dalam website ini | <a href="https://www.npmjs.com/">https://www.npmjs.com/</a> |
+| Composer | PHP Package manager dalam website ini | <a href="https://getcomposer.org/">https://getcomposer.org/</a> |
+| Tailwind Css | Frontend Framework untuk tampilan website | <a href="https://tailwindcss.com/">https://tailwindcss.com/</a> |`
+| JavaScript    | Digunakan untuk Laravel Ecosystem Jetstream  |  |
+| PHP  | Bahasa utama website  | <a href="https://www.php.net/">https://www.php.net/</a> |
+<!-- | lorem | lorem | <a href=""></a> | -->
 
 ## About Laravel
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
