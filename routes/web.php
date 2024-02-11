@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\DosenService;
+use App\Http\Controllers\MatakuliahController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +25,26 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::prefix("dashboard")->group(function () {
+        Route::get("/", function () {
+            return view('dashboard');
+        })->name("dashboard");
+        // Dosen Class
+        Route::prefix("dosen")->group(function () {
+            Route::controller(DosenController::class)->group(function () {
+                Route::get("/", "index")->name("dosen-index");
+            });
+
+            Route::controller(DosenService::class)->group(function () {
+                // Service CRUD
+            });
+        });
+
+        // Matakuliah Class
+        Route::prefix("mata-kuliah")->group(function () {
+            Route::controller(MatakuliahController::class)->group(function () {
+                Route::get("/", "index")->name("matkul-index");
+            });
+        });
+    });
 });
