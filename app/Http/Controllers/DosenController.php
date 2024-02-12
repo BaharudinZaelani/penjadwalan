@@ -8,6 +8,6 @@ class DosenController extends Controller
 {
     public function index()
     {
-        return "Lorem ipsum";
+        return view("dashboard.dosen.index");
     }
 }
