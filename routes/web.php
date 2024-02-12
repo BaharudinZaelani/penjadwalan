@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\DosenController;
-use App\Http\Controllers\DosenService;
 use App\Http\Controllers\GedungController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\services\DosenService as ServicesDosenService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +39,7 @@ Route::middleware([
                 Route::get("/", "index")->name("dosen-index");
             });
 
-            Route::controller(DosenService::class)->group(function () {
+            Route::controller(ServicesDosenService::class)->group(function () {
                 // Service CRUD
             });
         });
