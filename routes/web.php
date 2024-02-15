@@ -7,6 +7,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\services\DosenService as ServicesDosenService;
+use App\Http\Controllers\services\RuanganService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,16 +38,27 @@ Route::middleware([
         Route::prefix("dosen")->group(function () {
             Route::controller(DosenController::class)->group(function () {
                 Route::get("/", "index")->name("dosen-index");
+                Route::get("/insert", "insertView")->name("dosen-create-index");
+                Route::get("/update/{id}", "updateView")->name("dosen-update-index");
             });
 
             Route::controller(ServicesDosenService::class)->group(function () {
                 // Service CRUD
-                Route::get("/insert", "insertView")->name("dosen-create-index");
-                Route::get("/update/{id}", "updateView")->name("dosen-update-index");
 
                 Route::get("/delete/{id}", "delete")->name("dosen-delete");
                 Route::post("/insert", "insert")->name("dosen-insert");
                 Route::post("/update", "update")->name("dosen-update");
+            });
+        });
+
+        // Ruanga Class
+        Route::prefix("ruangan")->group(function () {
+            Route::controller(RuanganController::class)->group(function () {
+                Route::get("/", "index")->name("ruangan-index");
+                Route::get("/insert", "insert")->name("ruangan-insert");
+            });
+
+            Route::controller(RuanganService::class)->group(function () {
             });
         });
 
@@ -57,12 +69,6 @@ Route::middleware([
             });
         });
 
-        // Ruanga Class
-        Route::prefix("ruangan")->group(function () {
-            Route::controller(RuanganController::class)->group(function () {
-                Route::get("/", "index")->name("ruangan-index");
-            });
-        });
 
         // Kelas Class
         Route::prefix("kelas")->group(function () {

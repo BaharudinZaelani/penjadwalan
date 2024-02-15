@@ -8,31 +8,13 @@ use Illuminate\Http\Request;
 
 class DosenService extends Controller implements CRUDInterface
 {
-    // View
-    function insertView()
-    {
-        return view("dashboard.dosen.crud.insert");
-    }
-    function updateView($id)
-    {
-        try {
-            $data = $this->dosen::find($id)->first();
-            return view("dashboard.dosen.crud.update", [
-                "data" => $data
-            ]);
-        } catch (\Exception $e) {
-            return back()->with("danger", $e->getMessage());
-        }
-    }
-
-    // Services
     function insert(Request $request)
     {
         try {
             $this->dosen->create($request->all());
             return redirect(route("dosen-index"))->with("success", "Dosen berhasil ditambahkan.");
         } catch (\Exception $e) {
-            return back()->with("danger", "Error saat menambah data ! : " . $e->getMessage());
+            return redirect(route("dosen-index"))->with("danger", "Error saat menambah data ! : " . $e->getMessage());
         }
     }
 
@@ -43,9 +25,9 @@ class DosenService extends Controller implements CRUDInterface
             $data->nidn = $request->nidn;
             $data->nama = $request->nama;
             $data->save();
-            return back()->with("success", "Data Berhasil diubah");
+            return redirect(route("dosen-index"))->with("success", "Data Berhasil diubah");
         } catch (\Exception $e) {
-            return back()->with("danger", $e->getMessage());
+            return redirect(route("dosen-index"))->with("danger", $e->getMessage());
         }
     }
 
@@ -53,17 +35,9 @@ class DosenService extends Controller implements CRUDInterface
     {
         try {
             $this->dosen->destroy($id);
-            return back()->with("success", "Data berhasil dihapus.");
+            return redirect(route("dosen-index"))->with("success", "Data berhasil dihapus.");
         } catch (\Exception $e) {
-            return back()->with("danger", "Error saat menghapsu data ! : " . $e->getMessage());
+            return redirect(route("dosen-index"))->with("danger", "Error saat menghapsu data ! : " . $e->getMessage());
         }
-    }
-
-    function getAll()
-    {
-    }
-
-    function getByid($id)
-    {
     }
 }

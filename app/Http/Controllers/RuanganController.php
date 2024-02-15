@@ -10,4 +10,8 @@ class RuanganController extends Controller
     {
         return view("dashboard.ruangan.index");
     }
+    function insert()
+    {
+        return view("dashboard.ruangan.crud.insert");
+    }
 }
