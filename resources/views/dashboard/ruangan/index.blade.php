@@ -15,7 +15,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <x-card title="Ruangan Page">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi reiciendis quaerat inventore!
+                    @livewire('RuanganTable')
                 </x-card>
             </div>
         </div>

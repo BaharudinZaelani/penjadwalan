@@ -15,7 +15,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <x-card title="Dosen Page">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi reiciendis quaerat inventore!
+                    <a href="{{ route('dosen-create-index') }}"
+                        class="p-2 rounded text-white bg-green-500 hover:bg-green-400">
+                        <i class="fa-solid fa-add"></i>
+                        <span>Tambah Dosen</span>
+                    </a>
+                    <div class="mt-2">
+                        @livewire('DosenTable')
+                    </div>
                 </x-card>
             </div>
         </div>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dosens', function (Blueprint $table) {
             $table->id();
-            $table->integer("nip");
+            $table->integer("nidn");
             $table->string("nama");
             $table->timestamps();
         });

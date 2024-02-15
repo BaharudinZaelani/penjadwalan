@@ -17,12 +17,20 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        label {
+            text-transform: capitalize;
+        }
+    </style>
 
     <!-- Styles -->
     @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
+    <x-alert />
     <x-banner />
 
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">

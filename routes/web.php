@@ -41,6 +41,12 @@ Route::middleware([
 
             Route::controller(ServicesDosenService::class)->group(function () {
                 // Service CRUD
+                Route::get("/insert", "insertView")->name("dosen-create-index");
+                Route::get("/update/{id}", "updateView")->name("dosen-update-index");
+
+                Route::get("/delete/{id}", "delete")->name("dosen-delete");
+                Route::post("/insert", "insert")->name("dosen-insert");
+                Route::post("/update", "update")->name("dosen-update");
             });
         });
 

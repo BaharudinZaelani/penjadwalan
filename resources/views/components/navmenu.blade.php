@@ -1,5 +1,5 @@
 @php
-    $active = 'bg-indigo-400 rounded';
+    $active = 'bg-indigo-400 rounded text-white';
     $menu = [
         [
             'route' => 'dosen-index',
@@ -33,7 +33,7 @@
     <div class="flex gap-4">
         @foreach ($menu as $item)
             <a href="{{ route($item['route']) }}"
-                class="flex border border-indigo-400 rounded gap-3 duration-300 items-center align-center p-2 hover:bg-indigo-400 {{ request()->routeIs($item['route']) ? $active : '' }}">
+                class="flex hover:text-white border border-indigo-400 rounded gap-3 duration-300 items-center align-center p-2 hover:bg-indigo-400 {{ request()->routeIs($item['route']) ? $active : '' }}">
                 <i class="fa-solid {{ $item['icon'] }}"></i>
                 <span>{{ $item['title'] }}</span>
             </a>
