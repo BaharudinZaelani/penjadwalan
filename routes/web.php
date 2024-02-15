@@ -7,6 +7,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\services\DosenService as ServicesDosenService;
+use App\Http\Controllers\services\GedungService;
 use App\Http\Controllers\services\RuanganService;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,18 @@ Route::middleware([
             });
         });
 
+        // Gedung Class
+        Route::prefix("gedung")->group(function () {
+            Route::controller(GedungController::class)->group(function () {
+                Route::get("/", "index")->name("gedung-index");
+                Route::get("/insert", "insert")->name("gedung-create-index");
+            });
+            Route::controller(GedungService::class)->group(function () {
+                Route::post("/insert", "insert")->name("gedung-insert");
+                Route::get("/delete/{id}", "delete")->name("gedung-delete");
+            });
+        });
+
         // Ruanga Class
         Route::prefix("ruangan")->group(function () {
             Route::controller(RuanganController::class)->group(function () {
@@ -62,12 +75,6 @@ Route::middleware([
             });
         });
 
-        // Gedung Class
-        Route::prefix("gedung")->group(function () {
-            Route::controller(GedungController::class)->group(function () {
-                Route::get("/", "index")->name("gedung-index");
-            });
-        });
 
 
         // Kelas Class

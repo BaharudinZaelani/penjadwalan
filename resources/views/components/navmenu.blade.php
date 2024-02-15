@@ -7,14 +7,14 @@
             'icon' => 'fa-user',
         ],
         [
-            'route' => 'ruangan-index',
-            'title' => 'Ruangan',
-            'icon' => 'fa-people-roof',
-        ],
-        [
             'route' => 'gedung-index',
             'title' => 'Gedung',
             'icon' => 'fa-building-user',
+        ],
+        [
+            'route' => 'ruangan-index',
+            'title' => 'Ruangan',
+            'icon' => 'fa-people-roof',
         ],
         [
             'route' => 'kelas-index',

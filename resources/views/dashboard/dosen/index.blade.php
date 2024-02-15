@@ -15,11 +15,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <x-card title="Dosen Page">
-                    <a href="{{ route('dosen-create-index') }}"
-                        class="p-2 rounded text-white bg-green-500 hover:bg-green-400">
-                        <i class="fa-solid fa-add"></i>
-                        <span>Tambah Dosen</span>
-                    </a>
+                    <x-addButton route="dosen-create-index" param="" />
                     <div class="mt-2">
                         @livewire('DosenTable')
                     </div>

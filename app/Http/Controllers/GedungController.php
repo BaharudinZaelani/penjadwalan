@@ -10,4 +10,8 @@ class GedungController extends Controller
     {
         return view("dashboard.gedung.index");
     }
+    function insert()
+    {
+        return view("dashboard.gedung.crud.insert");
+    }
 }
