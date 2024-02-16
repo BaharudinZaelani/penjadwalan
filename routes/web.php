@@ -6,6 +6,7 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\service\JurusanService;
 use App\Http\Controllers\services\DosenService as ServicesDosenService;
 use App\Http\Controllers\services\GedungService;
 use App\Http\Controllers\services\KelasService;
@@ -78,6 +79,18 @@ Route::middleware([
             });
         });
 
+        // Jurusan Class
+        Route::prefix("jurusan")->group(function () {
+            Route::controller(JurusanController::class)->group(function () {
+                Route::get("/", "index")->name("jurusan-index");
+                Route::get("/insert", "insert")->name("jurusan-insert-index");
+            });
+            Route::controller(JurusanService::class)->group(function () {
+                Route::post("/insert", "insert")->name("jurusan-insert");
+                Route::get("/delete/{id}", "delete")->name("jurusan-delete");
+            });
+        });
+
         // Kelas Class
         Route::prefix("kelas")->group(function () {
             Route::controller(KelasController::class)->group(function () {
@@ -87,12 +100,6 @@ Route::middleware([
             Route::controller(KelasService::class)->group(function () {
                 Route::get("/delete/{id}", "delete")->name("kelas-delete");
                 Route::post("/insert", "insert")->name("kelas-insert");
-            });
-        });
-
-        Route::prefix("jurusan")->group(function () {
-            Route::controller(JurusanController::class)->group(function () {
-                Route::get("/", "index")->name("jurusan-index");
             });
         });
     });

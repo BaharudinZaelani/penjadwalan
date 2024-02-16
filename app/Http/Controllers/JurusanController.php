@@ -10,4 +10,9 @@ class JurusanController extends Controller
     {
         return view("dashboard.jurusan.index");
     }
+
+    function insert()
+    {
+        return view("dashboard.jurusan.crud.insert");
+    }
 }
