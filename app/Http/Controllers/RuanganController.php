@@ -12,6 +12,8 @@ class RuanganController extends Controller
     }
     function insert()
     {
-        return view("dashboard.ruangan.crud.insert");
+        return view("dashboard.ruangan.crud.insert", [
+            "gedung" => $this->gedung->all()
+        ]);
     }
 }

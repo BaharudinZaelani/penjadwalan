@@ -36,7 +36,7 @@ final class RuanganTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return Ruangan::query();
+        return Ruangan::query()->with("gedung");
     }
 
     public function relationSearch(): array
@@ -48,21 +48,29 @@ final class RuanganTable extends PowerGridComponent
     {
         return PowerGrid::fields()
             ->add('id')
-            ->add('created_at');
+            ->add('gedung.nama')
+            ->add('nama')
+            ->add('kapasitas_belajar')
+            ->add('kapasitas_ujian')
+            ->add('keterangan')
+            ->add("created_at");
     }
 
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->sortable(),
-
-            Column::make('Created at', 'created_at')
-                ->sortable()
-                ->searchable(),
-
-            Column::action('Action')
+            // Column::make("gedung", "gedung.nama")
+            //     ->sortable(),
+            Column::add()->title("nama")->field("nama")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
+            Column::add()->field("kapasitas_belajar")->title("kapasitas belajar")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
+            Column::add()->field("kapasitas_ujian")->title("kapasitas ujian")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
+            Column::add()->title("keterangan")->field("keterangan")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
+            Column::add()
+                ->title('Aktif')
+                ->field('status')
+                ->toggleable(true, 'YA', 'TIDAK')
+                ->contentClassField("bg-indigo-100"),
+            Column::action('Action')->visibleInExport(false)
         ];
     }
 
@@ -76,15 +84,33 @@ final class RuanganTable extends PowerGridComponent
     {
         $this->js('alert(' . $rowId . ')');
     }
+    #[\Livewire\Attributes\On('delete')]
+    public function delete($rowId): void
+    {
+        $this->redirect(route("ruangan-delete", $rowId));
+    }
+
+    public function onUpdatedToggleable(string $id, string $field, string $value): void
+    {
+        Ruangan::query()->find($id)->update([
+            $field => $value
+        ]);
+    }
+    public function onUpdatedEditable(string|int $id, string $field, string $value): void
+    {
+        Ruangan::query()->find($id)->update([
+            $field => $value
+        ]);
+    }
 
     public function actions(\App\Models\Ruangan $row): array
     {
         return [
-            Button::add('edit')
-                ->slot('Edit: ' . $row->id)
+            Button::add('hapus')
+                ->slot('<i class="fa-solid fa-trash"></i>')
                 ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+                ->class('px-2 py-1 rounded bg-red-400 text-white')
+                ->dispatch('delete', ['rowId' => $row->id]),
         ];
     }
 

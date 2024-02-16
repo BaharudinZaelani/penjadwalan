@@ -56,11 +56,11 @@
                                 <x-label value="status" />
                                 <div class="flex gap-3 items-center align-center">
                                     <div class="flex items-center gap-2 rounded p-2 shadow">
-                                        <x-checkbox type="radio" value="0" id="status_ya" name="status" />
+                                        <x-checkbox type="radio" value="1" id="status_ya" name="status" />
                                         <x-label for="status_ya" value="Ya" />
                                     </div>
                                     <div class="flex items-center gap-2 rounded p-2 shadow">
-                                        <x-checkbox type="radio" value="1" id="status_tidak" name="status" />
+                                        <x-checkbox type="radio" value="0" id="status_tidak" name="status" />
                                         <x-label for="status_tidak" value="Tidak" />
                                     </div>
                                 </div>

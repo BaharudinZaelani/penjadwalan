@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ruangan extends Model
 {
     use HasFactory;
-    protected $primaryKey = null;
+    protected $guarded = ['id'];
+
+    function gedung()
+    {
+        return $this->hasOne(Gedung::class, "id", "gedung_id");
+    }
 }

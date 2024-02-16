@@ -68,10 +68,12 @@ Route::middleware([
         Route::prefix("ruangan")->group(function () {
             Route::controller(RuanganController::class)->group(function () {
                 Route::get("/", "index")->name("ruangan-index");
-                Route::get("/insert", "insert")->name("ruangan-insert");
+                Route::get("/insert", "insert")->name("ruangan-insert-index");
             });
 
             Route::controller(RuanganService::class)->group(function () {
+                Route::post("/insert", "insert")->name("ruangan-insert");
+                Route::get("/delete/{id}", "delete")->name("ruangan-delete");
             });
         });
 
