@@ -8,6 +8,7 @@ use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\services\DosenService as ServicesDosenService;
 use App\Http\Controllers\services\GedungService;
+use App\Http\Controllers\services\KelasService;
 use App\Http\Controllers\services\RuanganService;
 use Illuminate\Support\Facades\Route;
 
@@ -77,12 +78,15 @@ Route::middleware([
             });
         });
 
-
-
         // Kelas Class
         Route::prefix("kelas")->group(function () {
             Route::controller(KelasController::class)->group(function () {
                 Route::get("/", "index")->name("kelas-index");
+                Route::get("/insert", "insert")->name("kelas-insert-index");
+            });
+            Route::controller(KelasService::class)->group(function () {
+                Route::get("/delete/{id}", "delete")->name("kelas-delete");
+                Route::post("/insert", "insert")->name("kelas-insert");
             });
         });
 

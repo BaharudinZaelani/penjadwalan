@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Gedung;
+use App\Models\Kelas;
 use App\Models\Ruangan;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,7 +16,8 @@ class Controller extends BaseController
     function __construct(
         protected $dosen = new Dosen(),
         protected $gedung = new Gedung(),
-        protected $ruangan = new Ruangan()
+        protected $ruangan = new Ruangan(),
+        protected $kelas = new Kelas()
     ) {
     }
 }

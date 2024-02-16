@@ -10,4 +10,8 @@ class KelasController extends Controller
     {
         return view("dashboard.kelas.index");
     }
+    function insert()
+    {
+        return view("dashboard.kelas.crud.insert");
+    }
 }
