@@ -54,8 +54,8 @@ final class KelasTable extends PowerGridComponent
     {
         return [
             Column::add()->title("nama")->field("nama")->sortable()->searchable()->editOnClick(hasPermission: true, saveOnMouseOut: true),
-            Column::add()->title("created")->field("created_at")->sortable()->editOnClick(hasPermission: true, saveOnMouseOut: true),
             Column::add()->title("status")->field("status")->toggleable(true, "YES", "NO"),
+            Column::add()->title("created")->field("created_at")->sortable(),
             Column::action('Action')->visibleInExport(false)
         ];
     }

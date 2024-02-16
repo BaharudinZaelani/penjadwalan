@@ -12,7 +12,7 @@ class KelasService extends Controller implements CRUDInterface
     {
         try {
             $this->kelas->create($request->except("_token"));
-            return redirect(route("kelas-index"))->with("success", "Data berhasil dihapus.");
+            return redirect(route("kelas-index"))->with("success", "Data berhasil ditambahkan.");
         } catch (\Exception $e) {
             return back()->with("danger", $e->getMessage());
         }

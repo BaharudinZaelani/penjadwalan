@@ -17,14 +17,14 @@
             'icon' => 'fa-people-roof',
         ],
         [
-            'route' => 'kelas-index',
-            'title' => 'Kelas',
-            'icon' => 'fa-chalkboard-user',
-        ],
-        [
             'route' => 'jurusan-index',
             'title' => 'Jurusan(Program Studi)',
             'icon' => 'fa-laptop-code',
+        ],
+        [
+            'route' => 'kelas-index',
+            'title' => 'Kelas',
+            'icon' => 'fa-chalkboard-user',
         ],
     ];
 @endphp

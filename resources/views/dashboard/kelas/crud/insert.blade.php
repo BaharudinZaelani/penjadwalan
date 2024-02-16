@@ -17,6 +17,19 @@
                         <x-slot name="form">
                             <!-- Input field -->
                             <div class="w-full">
+                                <x-label for="kode_jurusan" value="Jurusan" />
+                                <select name="kode_jurusan" id="kode_jurusan"
+                                    class='border-gray-300 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm',>
+                                    <option selected>- Pilih Jurusan -</option>
+                                    @foreach ($jurusan as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_idn }}({{ $item->nama_en }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <x-input-error for="gedung" />
+                            </div>
+
+                            <div class="w-full">
                                 <x-label for="nama" value="nama Kelas" />
                                 <x-input type="text" id="nama" name="nama" />
                                 <x-input-error for="nama" />

@@ -13,6 +13,8 @@ class JurusanController extends Controller
 
     function insert()
     {
-        return view("dashboard.jurusan.crud.insert");
+        return view("dashboard.jurusan.crud.insert", [
+            "dosen" => $this->dosen->all()
+        ]);
     }
 }

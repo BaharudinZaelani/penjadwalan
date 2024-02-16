@@ -12,6 +12,8 @@ class KelasController extends Controller
     }
     function insert()
     {
-        return view("dashboard.kelas.crud.insert");
+        return view("dashboard.kelas.crud.insert", [
+            "jurusan" => $this->jurusan->all()
+        ]);
     }
 }

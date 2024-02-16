@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("bidang_keahlian");
             $table->string("kompetensi_umum");
             $table->string("kompetensi_khusus");
-            $table->string("pejabat");
             $table->string("jabatan");
             $table->text("keterangan")->nullable();
             $table->boolean("status");

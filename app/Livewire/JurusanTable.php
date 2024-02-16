@@ -3,13 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Jurusan;
-use App\Models\Kelas;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
-use PowerComponents\LivewirePowerGrid\Facades\Filter;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
@@ -56,6 +53,12 @@ final class JurusanTable extends PowerGridComponent
     {
         return [
             Column::action('Action')->visibleInExport(false),
+            Column::add()
+                ->title('Aktif')
+                ->field('status')
+                ->toggleable(true, 'YA', 'TIDAK')
+                ->contentClassField("bg-indigo-100")
+                ->visibleInExport(false),
             Column::add()->title("nama (indonesia)")->field("nama_idn")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
             Column::add()->title("nama (Inggris)")->field("nama_en")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
             Column::add()->title("bidang keahlian")->field("bidang_keahlian")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
@@ -81,7 +84,7 @@ final class JurusanTable extends PowerGridComponent
 
     public function onUpdatedToggleable(string $id, string $field, string $value): void
     {
-        Kelas::query()->find($id)->update([
+        Jurusan::query()->find($id)->update([
             $field => $value
         ]);
     }

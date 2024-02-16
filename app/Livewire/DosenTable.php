@@ -57,10 +57,10 @@ final class DosenTable extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
-            Column::make('NIDN', 'nidn')->sortable(),
-            Column::make('Nama', 'nama')->sortable(),
+            Column::add()->title("nidn")->field("nidn")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable(),
+            Column::add()->title("nama")->field("nama")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable(),
             Column::make('Created at', 'created_at'),
-            Column::action('Action')
+            Column::action('Action')->visibleInExport(false)
         ];
     }
 
@@ -79,6 +79,13 @@ final class DosenTable extends PowerGridComponent
     public function hapus($rowId): void
     {
         $this->redirect(route("dosen-delete", $rowId));
+    }
+
+    public function onUpdatedEditable(string|int $id, string $field, string $value): void
+    {
+        Dosen::query()->find($id)->update([
+            $field => $value
+        ]);
     }
 
     public function actions(\App\Models\Dosen $row): array
