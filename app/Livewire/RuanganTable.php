@@ -59,18 +59,16 @@ final class RuanganTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            // Column::make("gedung", "gedung.nama")
-            //     ->sortable(),
+            Column::action('')->visibleInExport(false),
+            Column::add()
+                ->title('status')
+                ->field('status')
+                ->toggleable(true, 'YA', 'TIDAK')
+                ->contentClassField("bg-indigo-100"),
             Column::add()->title("nama")->field("nama")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
             Column::add()->field("kapasitas_belajar")->title("kapasitas belajar")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
             Column::add()->field("kapasitas_ujian")->title("kapasitas ujian")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
             Column::add()->title("keterangan")->field("keterangan")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
-            Column::add()
-                ->title('Aktif')
-                ->field('status')
-                ->toggleable(true, 'YA', 'TIDAK')
-                ->contentClassField("bg-indigo-100"),
-            Column::action('Action')->visibleInExport(false)
         ];
     }
 

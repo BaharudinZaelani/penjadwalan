@@ -52,9 +52,9 @@ final class JurusanTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::action('Action')->visibleInExport(false),
+            Column::action('')->visibleInExport(false),
             Column::add()
-                ->title('Aktif')
+                ->title('status')
                 ->field('status')
                 ->toggleable(true, 'YA', 'TIDAK')
                 ->contentClassField("bg-indigo-100")
@@ -67,7 +67,6 @@ final class JurusanTable extends PowerGridComponent
             Column::add()->title("pejabat")->field("pejabat")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
             Column::add()->title("jabatan")->field("jabatan")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
             Column::add()->title("keterangan")->field("keterangan")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
-            Column::make('Created at', 'created_at', 'created_at')->sortable(),
         ];
     }
 

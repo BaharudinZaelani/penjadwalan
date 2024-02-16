@@ -53,6 +53,12 @@ final class GedungTable extends PowerGridComponent
     {
         $canEdit = true;
         return [
+            Column::action('')->visibleInExport(false),
+            Column::add()
+                ->title('status')
+                ->field('status')
+                ->toggleable($canEdit, 'YA', 'TIDAK')
+                ->contentClassField("bg-indigo-100"),
             Column::make('Id', 'id'),
             Column::add()->title("Nama Gedung")->field("nama")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable(),
             Column::add()->title("Lantai")->field("lantai")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable(),
@@ -60,12 +66,6 @@ final class GedungTable extends PowerGridComponent
             Column::add()->title("tinggi")->field("tinggi")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
             Column::add()->title("lebar")->field("lebar")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
             Column::add()->title("keterangan")->field("keterangan")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
-            Column::add()
-                ->title('Aktif')
-                ->field('status')
-                ->toggleable($canEdit, 'YA', 'TIDAK')
-                ->contentClassField("bg-indigo-100"),
-            Column::action('')->visibleInExport(false),
         ];
     }
 

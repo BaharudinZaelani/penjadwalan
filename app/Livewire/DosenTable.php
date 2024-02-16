@@ -56,11 +56,11 @@ final class DosenTable extends PowerGridComponent
     public function columns(): array
     {
         return [
+            Column::action('')->visibleInExport(false),
             Column::make('Id', 'id'),
             Column::add()->title("nidn")->field("nidn")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable(),
             Column::add()->title("nama")->field("nama")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable(),
             Column::make('Created at', 'created_at'),
-            Column::action('Action')->visibleInExport(false)
         ];
     }
 

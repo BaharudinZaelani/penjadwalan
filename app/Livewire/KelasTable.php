@@ -53,10 +53,10 @@ final class KelasTable extends PowerGridComponent
     public function columns(): array
     {
         return [
+            Column::action('')->visibleInExport(false),
             Column::add()->title("nama")->field("nama")->sortable()->searchable()->editOnClick(hasPermission: true, saveOnMouseOut: true),
             Column::add()->title("status")->field("status")->toggleable(true, "YES", "NO"),
             Column::add()->title("created")->field("created_at")->sortable(),
-            Column::action('Action')->visibleInExport(false)
         ];
     }
 
