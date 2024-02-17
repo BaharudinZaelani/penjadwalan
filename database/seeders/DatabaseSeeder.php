@@ -27,7 +27,32 @@ class DatabaseSeeder extends Seeder
         Dosen::factory(10)->create();
         Gedung::factory(10)->create();
         Ruangan::factory(10)->create();
-        Jurusan::factory(10)->create();
-        Kelas::factory(10)->create();
+        // Kelas::factory(10)->create();
+
+        // Jurusan
+        Jurusan::factory(1)->create([
+            "nama_idn" => "Sistem Informasi",
+            "nama_en" => "Information System",
+        ]);
+        Jurusan::factory(1)->create([
+            "nama_idn" => "Desain Grafis",
+            "nama_en" => "Desain Grafis",
+        ]);
+        Jurusan::factory(1)->create([
+            "nama_idn" => "Ilmu Komunikasi",
+            "nama_en" => "Ilmu Komunikasi",
+        ]);
+        Jurusan::factory(1)->create([
+            "nama_idn" => "Akuntansi",
+            "nama_en" => "Akuntansi",
+        ]);
+        Jurusan::factory(1)->create([
+            "nama_idn" => "Administrasi Bisnis",
+            "nama_en" => "Administrasi Bisnis",
+        ]);
+        Jurusan::factory(1)->create([
+            "nama_idn" => "Manajemen",
+            "nama_en" => "Manajemen",
+        ]);
     }
 }

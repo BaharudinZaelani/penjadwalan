@@ -8,6 +8,17 @@ class MatakuliahController extends Controller
 {
     function index()
     {
-        return view("matkul");
+        $dosen = $this->dosen->all();
+        $gedung = $this->gedung->all();
+        $ruangan = $this->ruangan->all();
+        $kelas = $this->kelas->all();
+        $jurusan = $this->jurusan->all();
+        return view("matkul", compact([
+            "dosen",
+            "gedung",
+            "ruangan",
+            "kelas",
+            "jurusan"
+        ]));
     }
 }
