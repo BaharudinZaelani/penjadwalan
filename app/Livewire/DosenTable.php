@@ -25,9 +25,11 @@ final class DosenTable extends PowerGridComponent
         // $this->showCheckBox();
 
         return [
-            Exportable::make("Data Dosen " . Carbon::now()->year)
-                ->striped()
-                ->columnWidth([3 => 50])
+            Exportable::make("Data Dosen_" . time())
+                ->columnWidth([
+                    1 => 3,
+                    3 => 50,
+                ])
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput(),
             Footer::make()
@@ -57,10 +59,10 @@ final class DosenTable extends PowerGridComponent
     {
         return [
             Column::action('')->visibleInExport(false),
-            Column::make('Id', 'id'),
-            Column::add()->title("nidn")->field("nidn")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable(),
-            Column::add()->title("nama")->field("nama")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable(),
-            Column::make('Created at', 'created_at'),
+            Column::make('ID', 'id'),
+            Column::add()->title("NIDN")->field("nidn")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable(),
+            Column::add()->title("NAMA DOSEN")->field("nama")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable(),
+            Column::make('Created at', 'created_at')->visibleInExport(false),
         ];
     }
 

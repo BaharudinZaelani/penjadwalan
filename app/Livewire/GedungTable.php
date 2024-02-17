@@ -22,9 +22,17 @@ final class GedungTable extends PowerGridComponent
     public function setUp(): array
     {
         return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+            Exportable::make('Data Gedung_' . time())
+                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV)
+                ->columnWidth([
+                    1 => 4,
+                    2 => 20,
+                    3 => 10,
+                    4 => 10,
+                    5 => 10,
+                    6 => 10,
+                    7 => 50,
+                ]),
             Header::make()->showSearchInput(),
             Footer::make()
                 ->showPerPage()
@@ -58,14 +66,14 @@ final class GedungTable extends PowerGridComponent
                 ->title('status')
                 ->field('status')
                 ->toggleable($canEdit, 'YA', 'TIDAK')
-                ->contentClassField("bg-indigo-100"),
+                ->contentClassField("bg-indigo-100")->visibleInExport(false),
             Column::make('Id', 'id'),
-            Column::add()->title("Nama Gedung")->field("nama")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable(),
-            Column::add()->title("Lantai")->field("lantai")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable(),
-            Column::add()->title("Panjang")->field("panjang")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
-            Column::add()->title("tinggi")->field("tinggi")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
-            Column::add()->title("lebar")->field("lebar")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
-            Column::add()->title("keterangan")->field("keterangan")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
+            Column::add()->title("NAMA GEDUNG")->field("nama")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable(),
+            Column::add()->title("LANTAI")->field("lantai")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable(),
+            Column::add()->title("PANJANG")->field("panjang")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
+            Column::add()->title("TINGGI")->field("tinggi")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
+            Column::add()->title("LEBAR")->field("lebar")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
+            Column::add()->title("KETERANGAN")->field("keterangan")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable()->sortable(),
         ];
     }
 
