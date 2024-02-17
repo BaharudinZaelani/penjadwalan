@@ -22,9 +22,13 @@ final class KelasTable extends PowerGridComponent
 
     public function setUp(): array
     {
+        $time = time();
         return [
-            Exportable::make('export')
-                ->striped()
+            Exportable::make("[$time]Data Kelas")
+                ->columnWidth([
+                    1 => 3,
+                    2 => 10
+                ])
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput(),
             Footer::make()
@@ -54,9 +58,10 @@ final class KelasTable extends PowerGridComponent
     {
         return [
             Column::action('')->visibleInExport(false),
-            Column::add()->title("nama")->field("nama")->sortable()->searchable()->editOnClick(hasPermission: true, saveOnMouseOut: true),
-            Column::add()->title("status")->field("status")->toggleable(true, "YES", "NO"),
-            Column::add()->title("created")->field("created_at")->sortable(),
+            Column::add()->title("STATUS")->field("status")->toggleable(true, "YES", "NO")->visibleInExport(false),
+            Column::make('ID', 'id'),
+            Column::add()->title("NAMA")->field("nama")->sortable()->searchable()->editOnClick(hasPermission: true, saveOnMouseOut: true),
+            Column::add()->title("CREATED AT")->field("created_at")->sortable()->visibleInExport(false),
         ];
     }
 

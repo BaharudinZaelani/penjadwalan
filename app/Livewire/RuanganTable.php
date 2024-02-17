@@ -23,10 +23,17 @@ final class RuanganTable extends PowerGridComponent
     public function setUp(): array
     {
 
+        $time = time();
         return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+            Exportable::make("[$time]Data Ruangan")
+                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV)
+                ->columnWidth([
+                    1 => 3,
+                    2 => 30,
+                    3 => 10,
+                    4 => 10,
+                    5 => 80
+                ]),
             Header::make()->showSearchInput(),
             Footer::make()
                 ->showPerPage()
@@ -64,7 +71,8 @@ final class RuanganTable extends PowerGridComponent
                 ->title('status')
                 ->field('status')
                 ->toggleable(true, 'YA', 'TIDAK')
-                ->contentClassField("bg-indigo-100"),
+                ->contentClassField("bg-indigo-100")->visibleInExport(false),
+            Column::make('ID', 'id'),
             Column::add()->title("nama")->field("nama")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
             Column::add()->field("kapasitas_belajar")->title("kapasitas belajar")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),
             Column::add()->field("kapasitas_ujian")->title("kapasitas ujian")->editOnClick(hasPermission: true, saveOnMouseOut: true)->searchable()->sortable(),

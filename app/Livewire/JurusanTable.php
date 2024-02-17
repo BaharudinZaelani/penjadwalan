@@ -20,11 +20,19 @@ final class JurusanTable extends PowerGridComponent
 
     public function setUp(): array
     {
-
+        $time = time();
         return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+            Exportable::make("[$time]Data Jurusan")
+                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV)
+                ->columnWidth([
+                    1 => 3,
+                    2 => 30,
+                    3 => 30,
+                    4 => 30,
+                    5 => 30,
+                    6 => 30,
+                    7 => 50,
+                ]),
             Header::make()->showSearchInput(),
             Footer::make()
                 ->showPerPage()
@@ -59,14 +67,15 @@ final class JurusanTable extends PowerGridComponent
                 ->toggleable(true, 'YA', 'TIDAK')
                 ->contentClassField("bg-indigo-100")
                 ->visibleInExport(false),
-            Column::add()->title("nama (indonesia)")->field("nama_idn")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
-            Column::add()->title("nama (Inggris)")->field("nama_en")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
-            Column::add()->title("bidang keahlian")->field("bidang_keahlian")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
-            Column::add()->title("kompetensi umum")->field("kompetensi_umum")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
-            Column::add()->title("kompetensi khusus")->field("kompetensi_khusus")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
-            Column::add()->title("pejabat")->field("pejabat")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
-            Column::add()->title("jabatan")->field("jabatan")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
-            Column::add()->title("keterangan")->field("keterangan")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
+            Column::make('ID', 'id'),
+            Column::add()->title("NAMA (INDONESIA)")->field("nama_idn")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
+            Column::add()->title("NAMA (INGGRIS)")->field("nama_en")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
+            Column::add()->title("BIDANG KEAHLIAN")->field("bidang_keahlian")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
+            Column::add()->title("KOMPETENSI UMUM")->field("kompetensi_umum")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
+            Column::add()->title("KOMPETENSI KHUSUS")->field("kompetensi_khusus")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
+            // Column::add()->title("pejabat")->field("pejabat")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
+            // Column::add()->title("jabatan")->field("jabatan")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
+            Column::add()->title("KETERANGAN")->field("keterangan")->editOnClick(hasPermission: true, saveOnMouseOut: true)->sortable()->searchable(),
         ];
     }
 

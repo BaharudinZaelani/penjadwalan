@@ -21,8 +21,9 @@ final class GedungTable extends PowerGridComponent
 
     public function setUp(): array
     {
+        $time = time();
         return [
-            Exportable::make('Data Gedung_' . time())
+            Exportable::make("[$time]Data Gedung")
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV)
                 ->columnWidth([
                     1 => 4,

@@ -23,9 +23,9 @@ final class DosenTable extends PowerGridComponent
     public function setUp(): array
     {
         // $this->showCheckBox();
-
+        $time = time();
         return [
-            Exportable::make("Data Dosen_" . time())
+            Exportable::make("[$time]Data Dosen")
                 ->columnWidth([
                     1 => 3,
                     3 => 50,
