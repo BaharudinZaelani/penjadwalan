@@ -4,12 +4,14 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\GedungController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\service\JurusanService;
 use App\Http\Controllers\services\DosenService as ServicesDosenService;
 use App\Http\Controllers\services\GedungService;
 use App\Http\Controllers\services\KelasService;
+use App\Http\Controllers\services\KurikulumService;
 use App\Http\Controllers\services\RuanganService;
 use Illuminate\Support\Facades\Route;
 
@@ -100,6 +102,18 @@ Route::middleware([
             Route::controller(KelasService::class)->group(function () {
                 Route::get("/delete/{id}", "delete")->name("kelas-delete");
                 Route::post("/insert", "insert")->name("kelas-insert");
+            });
+        });
+
+        // Kurikulum Class
+        Route::prefix("kurikulum")->group(function () {
+            Route::controller(KurikulumController::class)->group(function () {
+                Route::get("/", "index")->name("kurikulum-index");
+                Route::get("/insert", "insert")->name("kurikulum-insert-index");
+            });
+            Route::controller(KurikulumService::class)->group(function () {
+                Route::post("/insert", "insert")->name("kurikulum-insert");
+                Route::get("/delete/{id}", "delete")->name("kurikulum-delete");
             });
         });
     });
