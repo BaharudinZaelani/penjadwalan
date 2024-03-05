@@ -28,7 +28,7 @@ class Controller extends BaseController
         protected Kurikulum $kurikulum,
         protected MataKuliah $mataKuliah,
         protected Waktu $waktu,
-        protected Semester $semester
+        protected Semester $semester,
     ) {
     }
 }

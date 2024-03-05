@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('waktus', function (Blueprint $table) {
             $table->id();
-            $table->integer("jam");
-            $table->integer("menit");
-            $table->integer("detik")->default(0);
+            $table->boolean("status")->default(true);
+            $table->string("waktu_mulai");
+            $table->string("waktu_selesai");
             $table->timestamps();
         });
     }

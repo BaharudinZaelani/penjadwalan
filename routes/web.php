@@ -15,6 +15,8 @@ use App\Http\Controllers\services\KelasService;
 use App\Http\Controllers\services\KurikulumService;
 use App\Http\Controllers\services\RuanganService;
 use App\Http\Controllers\services\SemesterService;
+use App\Http\Controllers\services\WaktuService;
+use App\Http\Controllers\WaktuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -135,6 +137,13 @@ Route::middleware([
 
             Route::controller(SemesterService::class)->group(function () {
                 Route::post("/insert", "insert")->name('semester-insert');
+            });
+        });
+
+        // Waktu Class
+        Route::prefix("waktu")->group(function () {
+            Route::controller(WaktuService::class)->group(function () {
+                Route::post("/insert", "insert")->name("waktu-insert");
             });
         });
     });

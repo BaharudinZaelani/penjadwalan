@@ -9,6 +9,7 @@ use App\Models\Gedung;
 use App\Models\Jurusan;
 use App\Models\Kelas;
 use App\Models\Ruangan;
+use App\Models\Waktu;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -55,5 +56,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Kelas::factory(10)->create();
+
+        Waktu::create([
+            "waktu_mulai" => "10:00",
+            "waktu_selesai" => "12:00",
+        ]);
+        Waktu::create([
+            "waktu_mulai" => "08:00",
+            "waktu_selesai" => "10:00",
+        ]);
+
+        Waktu::create([
+            "waktu_mulai" => "19:00",
+            "waktu_selesai" => "21:00",
+        ]);
     }
 }
