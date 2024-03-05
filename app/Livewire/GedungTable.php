@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Gedung;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
