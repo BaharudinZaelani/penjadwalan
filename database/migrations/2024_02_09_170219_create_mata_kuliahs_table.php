@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("tingkat");
             $table->integer("jam");
             $table->integer("sesi");
-            $table->boolean("status");
+            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }

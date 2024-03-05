@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("kapasitas_belajar");
             $table->string("kapasitas_ujian");
             $table->text("keterangan");
-            $table->boolean("status");
+            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }

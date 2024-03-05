@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("kode_jurusan")->constrained("jurusans");
             $table->string("nama");
-            $table->boolean("status");
+            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }

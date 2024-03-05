@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("kompetensi_khusus");
             $table->string("jabatan");
             $table->text("keterangan")->nullable();
-            $table->boolean("status");
+            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }

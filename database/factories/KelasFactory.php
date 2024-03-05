@@ -17,7 +17,7 @@ class KelasFactory extends Factory
     public function definition(): array
     {
         return [
-            "status" => $this->faker->randomNumber(1, false),
+            "status" => $this->faker->boolean(),
             "kode_jurusan" => rand(1, 5),
             "nama" => $this->faker->randomNumber(5)
         ];

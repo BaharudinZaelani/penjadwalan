@@ -17,7 +17,7 @@ class RuanganFactory extends Factory
     public function definition(): array
     {
         return [
-            "status" => $this->faker->randomNumber(1, false),
+            "status" => $this->faker->boolean(),
             "nama" => "Ruangan ." . $this->faker->randomNumber(2, false),
             "kode_gedung" => $this->faker->randomDigitNotNull(),
             "kapasitas_belajar" => $this->faker->randomNumber(2, false),

@@ -17,7 +17,7 @@ class JurusanFactory extends Factory
     public function definition(): array
     {
         return [
-            "status" => $this->faker->randomNumber(1, false),
+            "status" => $this->faker->boolean(),
             "nama_idn" => "Sistem Informasi " . $this->faker->randomNumber(2, false),
             "nama_en" => "Information System " . $this->faker->randomNumber(2, false),
             "bidang_keahlian" => "Lorem Ipsum " . time(),

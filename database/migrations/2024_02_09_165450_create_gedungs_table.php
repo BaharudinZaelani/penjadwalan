@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("tinggi");
             $table->string("lebar");
             $table->text("keterangan");
-            $table->boolean("status");
+            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }
