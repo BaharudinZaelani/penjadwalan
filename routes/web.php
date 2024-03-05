@@ -7,7 +7,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\RuanganController;
-use App\Http\Controllers\service\JurusanService;
+use App\Http\Controllers\services\JurusanService;
 use App\Http\Controllers\services\DosenService as ServicesDosenService;
 use App\Http\Controllers\services\GedungService;
 use App\Http\Controllers\services\KelasService;

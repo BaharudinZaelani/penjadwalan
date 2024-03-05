@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jadwal_kuliahs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId("ruangan_id")->constrained("ruangans");
-            $table->string("hari");
-            $table->timestamps();
+        Schema::table('jadwal_kuliahs', function (Blueprint $table) {
+            $table->foreignId("waktu_id")->constrained("waktus");
+            $table->foreignId("matkul_id")->constrained("mata_kuliahs");
         });
     }
 
@@ -24,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jadwal_kuliahs');
+        Schema::table('jadwal_kuliahs', function (Blueprint $table) {
+            //
+        });
     }
 };

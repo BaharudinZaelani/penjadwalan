@@ -18,7 +18,7 @@ class KelasFactory extends Factory
     {
         return [
             "status" => $this->faker->randomNumber(1, false),
-            "kode_jurusan" => $this->faker->randomDigitNotNull(),
+            "kode_jurusan" => rand(1, 5),
             "nama" => $this->faker->randomNumber(5)
         ];
     }

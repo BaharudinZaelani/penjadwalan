@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jadwal_kuliahs', function (Blueprint $table) {
+        Schema::create('waktus', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("ruangan_id")->constrained("ruangans");
-            $table->string("hari");
+            $table->integer("jam");
+            $table->integer("menit");
+            $table->integer("detik")->default(0);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jadwal_kuliahs');
+        Schema::dropIfExists('waktus');
     }
 };

@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
         Dosen::factory(10)->create();
         Gedung::factory(10)->create();
         Ruangan::factory(10)->create();
-        // Kelas::factory(10)->create();
 
         // Jurusan
         Jurusan::factory(1)->create([
@@ -54,5 +53,7 @@ class DatabaseSeeder extends Seeder
             "nama_idn" => "Manajemen",
             "nama_en" => "Manajemen",
         ]);
+
+        Kelas::factory(10)->create();
     }
 }

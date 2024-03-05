@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 class MatakuliahController extends Controller
 {
     function index()
     {
         $dosen = $this->dosen->all();
-        $gedung = $this->gedung->all();
-        $ruangan = $this->ruangan->all();
-        $kelas = $this->kelas->all();
-        $jurusan = $this->jurusan->all();
+        $gedung = $this->gedung->where("status", true)->get();
+        $ruangan = $this->ruangan->where("status", true)->get();
+        $kelas = $this->kelas->where("status", true)->get();
+        $jurusan = $this->jurusan->where("status", true)->get();
+        $kurikulum = $this->kurikulum->where("status", true)->get();
+
+        // Matkul
+        // $matkul = $this->;
         return view("matkul", compact([
             "dosen",
             "gedung",
             "ruangan",
             "kelas",
-            "jurusan"
+            "jurusan",
+            "kurikulum"
         ]));
     }
 }

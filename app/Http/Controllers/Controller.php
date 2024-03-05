@@ -7,7 +7,9 @@ use App\Models\Gedung;
 use App\Models\Jurusan;
 use App\Models\Kelas;
 use App\Models\Kurikulum;
+use App\Models\MataKuliah;
 use App\Models\Ruangan;
+use App\Models\Waktu;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -15,13 +17,16 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
-    function __construct(
-        protected $dosen = new Dosen(),
-        protected $gedung = new Gedung(),
-        protected $ruangan = new Ruangan(),
-        protected $kelas = new Kelas(),
-        protected $jurusan = new Jurusan(),
-        protected $kurikulum = new Kurikulum(),
+
+    public function __construct(
+        protected Dosen $dosen,
+        protected Gedung $gedung,
+        protected Ruangan $ruangan,
+        protected Kelas $kelas,
+        protected Jurusan $jurusan,
+        protected Kurikulum $kurikulum,
+        protected MataKuliah $mataKuliah,
+        protected Waktu $waktu
     ) {
     }
 }

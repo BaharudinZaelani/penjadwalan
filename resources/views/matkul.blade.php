@@ -8,7 +8,7 @@
     <div class="py-5">
         <div class="max-w-7xl mb-3 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-5">
-                <div class="flex gap-3">
+                <div class="lg:flex max-[680px]:grid max-[680px]:grid-cols-2 gap-3">
                     {{-- Dosen --}}
                     <a href="{{ route('dosen-index') }}" class="rounded border p-2 flex gap-2 align-center items-center">
                         <i class="fa-solid fa-user"></i>
@@ -43,6 +43,13 @@
                         <h1 class="capitalize">kelas :</h1>
                         <h1 class="capitalize">{{ $kelas->count() }}</h1>
                     </a>
+                    {{-- kurikulum --}}
+                    <a href="{{ route('kurikulum-index') }}"
+                        class="rounded border p-2 flex gap-2 align-center items-center">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <h1 class="capitalize">kurikulum :</h1>
+                        <h1 class="capitalize">{{ $kurikulum->count() }}</h1>
+                    </a>
                 </div>
             </div>
         </div>
@@ -73,7 +80,7 @@
 
                             <div class="w-full">
                                 <x-label for="jurusan" value="jurusan" />
-                                <select name="jurusan" id="jurusan"
+                                <select name="jurusan" id="jurusan (Program Studi)"
                                     class='border-gray-300 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm',>
                                     <option selected value="auto">Semua Jurusan</option>
                                     @foreach ($jurusan as $item)
@@ -92,5 +99,9 @@
                 </x-card>
             </div>
         </div>
+    </div>
+
+    <div class="py-5">
+
     </div>
 </x-app-layout>

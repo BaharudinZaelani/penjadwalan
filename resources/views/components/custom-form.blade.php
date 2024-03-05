@@ -6,7 +6,7 @@
             @csrf
             <div
                 class="px-4 py-5 bg-white dark:bg-gray-800 sm:p-6 shadow {{ isset($actions) ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md' }}">
-                <div class="grid grid-cols-2 gap-6">
+                <div class="max-[680px]:grid-cols-1 lg:grid lg:grid-cols-2 gap-5">
                     {{ $form }}
                 </div>
             </div>

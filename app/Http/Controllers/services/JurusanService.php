@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\service;
+namespace App\Http\Controllers\services;
 
 use App\Http\Controllers\Controller;
 use App\Interface\CRUDInterface;
