@@ -13,16 +13,16 @@ class MatakuliahController extends Controller
         $kelas = $this->kelas->where("status", true)->get();
         $jurusan = $this->jurusan->where("status", true)->get();
         $kurikulum = $this->kurikulum->where("status", true)->get();
+        $semester = $this->semester->all();
 
-        // Matkul
-        // $matkul = $this->;
         return view("matkul", compact([
             "dosen",
             "gedung",
             "ruangan",
             "kelas",
             "jurusan",
-            "kurikulum"
+            "kurikulum",
+            "semester"
         ]));
     }
 }

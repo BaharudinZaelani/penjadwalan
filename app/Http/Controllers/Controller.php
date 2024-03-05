@@ -9,6 +9,7 @@ use App\Models\Kelas;
 use App\Models\Kurikulum;
 use App\Models\MataKuliah;
 use App\Models\Ruangan;
+use App\Models\Semester;
 use App\Models\Waktu;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,7 +27,8 @@ class Controller extends BaseController
         protected Jurusan $jurusan,
         protected Kurikulum $kurikulum,
         protected MataKuliah $mataKuliah,
-        protected Waktu $waktu
+        protected Waktu $waktu,
+        protected Semester $semester
     ) {
     }
 }

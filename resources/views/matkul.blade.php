@@ -63,19 +63,21 @@
                         <x-slot name="form">
                             <!-- Input field for employee address -->
                             <div class="w-full">
-                                <x-label for="semester" value="semester" />
-                                <select name="semester" id="semester"
-                                    class='border-gray-300 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm',>
-                                    <option selected value="1">Semester 1</option>
-                                    <option value="2">Semester 2</option>
-                                    <option value="3">Semester 3</option>
-                                    <option value="4">Semester 4</option>
-                                    <option value="5">Semester 5</option>
-                                    <option value="6">Semester 6</option>
-                                    <option value="7">Semester 7</option>
-                                    <option value="8">Semester 8</option>
-                                </select>
-                                <x-input-error for="gedung" />
+                                <div class="mb-4">
+                                    <x-label for="semester" value="semester" />
+                                    <select name="semester" id="semester"
+                                        class='border-gray-300 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm',>
+                                        <option selected>-- Select SMT --</option>
+                                        @foreach ($semester as $smt)
+                                            <option value="{{ $smt->id }}">
+                                                {{ $smt->tahun . '/' . $smt->nama . '/' . $smt->bilangan }}</option>
+                                        @endforeach
+                                    </select>
+                                    <x-input-error for="gedung" />
+                                </div>
+                                <div>
+                                    <x-addButton route="semester-insert-index"></x-addButton>
+                                </div>
                             </div>
 
                             <div class="w-full">

@@ -9,6 +9,7 @@ use App\Models\Kelas;
 use App\Models\Kurikulum;
 use App\Models\MataKuliah;
 use App\Models\Ruangan;
+use App\Models\Semester;
 use App\Models\Waktu;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(Kurikulum::class, fn () => new Kurikulum());
         $this->app->bind(MataKuliah::class, fn () => new MataKuliah());
         $this->app->bind(Waktu::class, fn () => new Waktu());
+        $this->app->bind(Semester::class, fn () => new Semester());
     }
 }

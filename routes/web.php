@@ -7,12 +7,14 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\services\JurusanService;
 use App\Http\Controllers\services\DosenService as ServicesDosenService;
 use App\Http\Controllers\services\GedungService;
 use App\Http\Controllers\services\KelasService;
 use App\Http\Controllers\services\KurikulumService;
 use App\Http\Controllers\services\RuanganService;
+use App\Http\Controllers\services\SemesterService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -120,8 +122,20 @@ Route::middleware([
 
     // Matakuliah Class
     Route::prefix("mata-kuliah")->group(function () {
+        // Matakuliah index
         Route::controller(MatakuliahController::class)->group(function () {
             Route::get("/", "index")->name("matkul-index");
+        });
+
+        // Semester Class
+        Route::prefix("semester")->group(function () {
+            Route::controller(SemesterController::class)->group(function () {
+                Route::get("/insert", "insertView")->name("semester-insert-index");
+            });
+
+            Route::controller(SemesterService::class)->group(function () {
+                Route::post("/insert", "insert")->name('semester-insert');
+            });
         });
     });
 });
