@@ -17,7 +17,6 @@ class GedungFactory extends Factory
     public function definition(): array
     {
         return [
-            "status" => $this->faker->randomNumber(2, false),
             "nama" => "Gedung " . $this->faker->randomNumber(2, true),
             "lantai" => $this->faker->randomNumber(2, true) . " L",
             "panjang" => $this->faker->randomNumber(3, true) . " M",

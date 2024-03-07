@@ -58,12 +58,13 @@ class DatabaseSeeder extends Seeder
         Kelas::factory(10)->create();
 
         Waktu::create([
-            "waktu_mulai" => "10:00",
-            "waktu_selesai" => "12:00",
-        ]);
-        Waktu::create([
             "waktu_mulai" => "08:00",
             "waktu_selesai" => "10:00",
+        ]);
+
+        Waktu::create([
+            "waktu_mulai" => "10:00",
+            "waktu_selesai" => "12:00",
         ]);
 
         Waktu::create([

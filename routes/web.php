@@ -13,6 +13,7 @@ use App\Http\Controllers\services\DosenService as ServicesDosenService;
 use App\Http\Controllers\services\GedungService;
 use App\Http\Controllers\services\KelasService;
 use App\Http\Controllers\services\KurikulumService;
+use App\Http\Controllers\services\MatkulService;
 use App\Http\Controllers\services\RuanganService;
 use App\Http\Controllers\services\SemesterService;
 use App\Http\Controllers\services\WaktuService;
@@ -124,9 +125,14 @@ Route::middleware([
 
     // Matakuliah Class
     Route::prefix("mata-kuliah")->group(function () {
-        // Matakuliah index
+        // View
         Route::controller(MatakuliahController::class)->group(function () {
             Route::get("/", "index")->name("matkul-index");
+        });
+
+        // Services
+        Route::controller(MatkulService::class)->prefix("matkul-service")->group(function () {
+            Route::post("/insert", "insert")->name("matkul-insert");
         });
 
         // Semester Class

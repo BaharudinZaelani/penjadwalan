@@ -16,9 +16,6 @@ return new class extends Migration
             $table->foreignId("kode_kurikulum")->constrained("kurikulums");
             $table->string("nama_id");
             $table->string("nama_en");
-            $table->string("tingkat");
-            $table->integer("jam");
-            $table->integer("sesi");
             $table->boolean("status")->default(true);
             $table->timestamps();
         });

@@ -6,6 +6,7 @@
     </x-slot>
 
     <div class="py-5">
+        {{-- Header --}}
         <div class="max-w-7xl mb-3 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-5">
                 <div class="lg:flex max-[680px]:grid max-[680px]:grid-cols-2 gap-3">
@@ -56,12 +57,77 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                <x-card title="Matakuliah" show-title="true">
+                    <div class="w-full grid grid-cols-2 gap-4">
+                        <x-custom-form method="post" action="{{ route('matkul-insert') }}">
+                            <x-slot name="form">
+                                <div class="w-full">
+                                    <x-label for="nama_id" value="Nama Indonesia" />
+                                    <x-input type="text" id="nama_id" name="nama_id" />
+                                    <x-input-error for="nama_id" />
+                                </div>
+                                <div class="w-full">
+                                    <x-label for="nama_en" value="Nama Inggris" />
+                                    <x-input type="text" id="nama_en" name="nama_en" />
+                                    <x-input-error for="nama_en" />
+                                </div>
 
-                <x-card title="Waktu Mulai">
+                                <div class="w-full">
+                                    <x-label for="dosen_id" value="Dosen" />
+                                    <select name="dosen_id" id="dosen_id"
+                                        class='border-gray-300 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm',>
+                                        <option selected></option>
+                                        @foreach ($dosen as $item)
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <x-input-error for="gedung" />
+                                </div>
+                                <div class="w-full">
+                                    <x-label for="kode_kurikulum" value="Kurikulum" />
+                                    <select name="kode_kurikulum" id="kode_kurikulum"
+                                        class='border-gray-300 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm',>
+                                        @foreach ($kurikulum as $item)
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <x-input-error for="gedung" />
+                                </div>
+                                <div class="w-full">
+                                    <x-label value="status" />
+                                    <div class="flex gap-3 items-center align-center">
+                                        <div class="flex items-center gap-2 rounded p-2 shadow">
+                                            <x-checkbox type="radio" value="1" id="status_ya" name="status" />
+                                            <x-label for="status_ya" value="Ya" />
+                                        </div>
+                                        <div class="flex items-center gap-2 rounded p-2 shadow">
+                                            <x-checkbox type="radio" value="0" id="status_tidak"
+                                                name="status" />
+                                            <x-label for="status_tidak" value="Tidak" />
+                                        </div>
+                                    </div>
+                                    <x-input-error for="status" />
+                                </div>
+                            </x-slot>
+                            <!-- Actions for the form -->
+                            <x-slot name="actions">
+                                <!-- Submit button -->
+                                <x-button type="submit">Tambah Waktu</x-button>
+                            </x-slot>
+                        </x-custom-form>
+                        @livewire('MatakuliahTable')
+                    </div>
+
+                </x-card>
+                {{-- Waktu --}}
+                <x-card title="Jam Perkuliahan" show-title="true">
                     <div class="w-full grid grid-cols-2 gap-4">
                         <x-custom-form method="post" action="{{ route('waktu-insert') }}">
                             <x-slot name="form">
-                                <!-- Input field for employee address -->
                                 <div class="w-full">
                                     <x-label for="waktu_mulai" value="waktu mulai" />
                                     <x-input type="time" id="waktu_mulai" name="waktu_mulai" />
@@ -83,8 +149,7 @@
 
                     </div>
                 </x-card>
-
-                <x-card title="Generate Matakuliah" show-title="true">
+                <x-card title="Generate Waktu Perkuliahan" show-title="true">
                     <x-custom-form method="post" action="{{ route('gedung-index') }}">
                         <x-slot name="description">
                         </x-slot>

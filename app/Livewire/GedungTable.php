@@ -65,7 +65,7 @@ final class GedungTable extends PowerGridComponent
             Column::add()
                 ->title('status')
                 ->field('status')
-                ->toggleable($canEdit, 'YA', 'TIDAK')
+                ->toggleable($canEdit, 'yes', 'no')
                 ->contentClassField("bg-indigo-100")->visibleInExport(false),
             Column::make('Id', 'id'),
             Column::add()->title("NAMA GEDUNG")->field("nama")->editOnClick(hasPermission: $canEdit, saveOnMouseOut: true)->sortable(),
