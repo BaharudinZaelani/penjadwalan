@@ -150,7 +150,7 @@
                     </div>
                 </x-card>
                 <x-card title="Generate Waktu Perkuliahan" show-title="true">
-                    <x-custom-form method="post" action="{{ route('gedung-index') }}">
+                    <x-custom-form method="post" action="{{ route('jadwal-insert') }}">
                         <x-slot name="description">
                         </x-slot>
                         <x-slot name="form">
@@ -160,7 +160,7 @@
                                     <x-label for="semester" value="semester" />
                                     <select name="semester" id="semester"
                                         class='border-gray-300 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm',>
-                                        <option selected>-- Select SMT --</option>
+                                        <option selected value="all">-- Semua Semester --</option>
                                         @foreach ($semester as $smt)
                                             <option value="{{ $smt->id }}">
                                                 {{ $smt->tahun . '/' . $smt->nama . '/' . $smt->bilangan }}
@@ -194,11 +194,11 @@
                         </x-slot>
                     </x-custom-form>
                 </x-card>
+                <x-card title="Jadwal Kuliah" show-title="true">
+                    @livewire('JadwalKuliahTable')
+                </x-card>
             </div>
         </div>
     </div>
 
-    <div class="py-5">
-
-    </div>
 </x-app-layout>

@@ -8,6 +8,8 @@ use App\Models\Dosen;
 use App\Models\Gedung;
 use App\Models\Jurusan;
 use App\Models\Kelas;
+use App\Models\Kurikulum;
+use App\Models\MataKuliah;
 use App\Models\Ruangan;
 use App\Models\Waktu;
 use Illuminate\Database\Seeder;
@@ -26,8 +28,12 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make("admin123")
         ]);
         Dosen::factory(10)->create();
-        Gedung::factory(10)->create();
-        Ruangan::factory(10)->create();
+        Gedung::factory(10)->create([
+            "status" => true
+        ]);
+        Ruangan::factory(5)->create([
+            "status" => true
+        ]);
 
         // Jurusan
         Jurusan::factory(1)->create([
@@ -54,22 +60,27 @@ class DatabaseSeeder extends Seeder
             "nama_idn" => "Manajemen",
             "nama_en" => "Manajemen",
         ]);
-
-        Kelas::factory(10)->create();
+        Kelas::factory(3)->create();
 
         Waktu::create([
             "waktu_mulai" => "08:00",
             "waktu_selesai" => "10:00",
         ]);
-
         Waktu::create([
             "waktu_mulai" => "10:00",
             "waktu_selesai" => "12:00",
         ]);
-
         Waktu::create([
             "waktu_mulai" => "19:00",
             "waktu_selesai" => "21:00",
         ]);
+
+        Kurikulum::create([
+            "nama" => "KM 2020",
+            "status" => true
+        ]);
+
+        // Matakuliah
+        // MataKuliah::factory(15)->create();
     }
 }

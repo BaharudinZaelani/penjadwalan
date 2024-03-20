@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\genetik\Genetik;
 
 class MatakuliahController extends Controller
 {

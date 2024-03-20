@@ -11,6 +11,7 @@ use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\services\JurusanService;
 use App\Http\Controllers\services\DosenService as ServicesDosenService;
 use App\Http\Controllers\services\GedungService;
+use App\Http\Controllers\services\JadwalKuliahConstroller;
 use App\Http\Controllers\services\KelasService;
 use App\Http\Controllers\services\KurikulumService;
 use App\Http\Controllers\services\MatkulService;
@@ -151,6 +152,11 @@ Route::middleware([
             Route::controller(WaktuService::class)->group(function () {
                 Route::post("/insert", "insert")->name("waktu-insert");
             });
+        });
+
+        // Jadwal Kuliah
+        Route::prefix("matkul")->controller(JadwalKuliahConstroller::class)->group(function () {
+            Route::post("/insert", "insert")->name("jadwal-insert");
         });
     });
 });
