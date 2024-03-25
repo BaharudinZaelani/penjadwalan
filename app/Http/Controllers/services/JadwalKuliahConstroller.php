@@ -15,28 +15,21 @@ class JadwalKuliahConstroller extends Controller
     function insert(Request $request, Genetik $gen)
     {
         try {
+            if ($request->has('save_to_db') && session()->has('jadwalKuliah')) {
+                JadwalKuliah::insert(session("jadwalKuliah"));
+            }
             if (isset($request->semester)) {
-                $semester = 0;
-                if ($request->semester == "all") {
-                    $semester = count(Semester::all()->toArray());
-                } else {
-                    $semester = 1;
-                }
-                $jadwalKuliah = $gen->getResult($semester);
-                // insert data
-                foreach ($jadwalKuliah as $row) {
-                    // child
-                    foreach ($row as $child) {
-                        $child = new Request($child);
-                        JadwalKuliah::create($child->except("id"));
-                    }
-                }
-                return back()->with("success", "Generate Jadwal Kuliah success !.");
+                $semesterCount = $request->semester == "all" ? Semester::count() : 1;
+                $jadwalKuliah = $gen->getResult($semesterCount);
+                $dataToInsert = collect($jadwalKuliah)->flatten(1)->all();
+                session(['jadwalKuliah' => $dataToInsert]);
+                return back()->with("success", "Generate Jadwal Kuliah success !");
             }
         } catch (Exception $e) {
             return back()->with("danger", $e->getMessage());
         }
     }
+
 
     function delete($id)
     {

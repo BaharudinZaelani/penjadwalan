@@ -9,4 +9,9 @@ class MataKuliah extends Model
 {
     use HasFactory;
     protected $guarded = ["id"];
+
+    public function jurusan()
+    {
+        return $this->hasOne(Jurusan::class, "id", "jurusan_id");
+    }
 }

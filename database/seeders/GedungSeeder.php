@@ -13,8 +13,10 @@ class GedungSeeder extends Seeder
      */
     public function run(): void
     {
-        Gedung::factory(10)->create([
-            "status" => true
+        Gedung::factory(1)->create([
+            "status" => true,
+            "nama" => "Gedung IMWI",
+            "lantai" => "1"
         ]);
     }
 }

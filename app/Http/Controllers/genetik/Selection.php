@@ -47,31 +47,23 @@ class Selection
     {
         $size = env("TOURNAMENT_SIZE");
         $finalData = [];
+
+        // Lakukan turnamen untuk setiap individu dalam populasi
         foreach ($population as $key => $row) {
-            // Lakukan turnamen
+            $tournamentParticipants = [];
+
+            // Pilih peserta turnamen secara acak
             for ($i = 0; $i < $size; $i++) {
-                // Pilih individu acak dari populasi
                 $randomIndex = rand(0, count($population) - 1);
-                $randomPopulation = $population[$randomIndex];
-
-                // Hitung fitness dari individu acak
-                $fitness = Fitness::calculateFitness($randomPopulation);
-
-                // Simpan nilai fitness dan individu jika memenuhi kriteria fitness yang tinggi
-                if ($fitness >= env("PROBABILITY_CUTOFF")) {
-                    $finalData[$key] = [
-                        "index" => $key,
-                        "fitness" => $fitness,
-                        "data" => $randomPopulation
-                    ];
-                }
+                $tournamentParticipants[] = $population[$randomIndex];
             }
-        }
 
-        // Urutkan populasi terbaik berdasarkan nilai fitness secara menurun
-        usort($finalData, function ($a, $b) {
-            return $b['fitness'] <=> $a['fitness'];
-        });
+            // Simpan hasil turnamen
+            $finalData[$key] = [
+                "index" => $key,
+                "data" => $tournamentParticipants
+            ];
+        }
 
         return $finalData;
     }

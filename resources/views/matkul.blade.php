@@ -73,13 +73,13 @@
                                 </div>
 
                                 <div class="w-full">
-                                    <x-label for="dosen_id" value="Dosen" />
-                                    <select name="dosen_id" id="dosen_id"
+                                    <x-label for="jurusan_id" value="Jurusan/Program Study" />
+                                    <select name="jurusan_id" id="jurusan_id"
                                         class='border-gray-300 w-full dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm',>
                                         <option selected></option>
-                                        @foreach ($dosen as $item)
+                                        @foreach ($jurusan as $item)
                                             <option value="{{ $item->id }}">
-                                                {{ $item->nama }}
+                                                {{ $item->nama_idn }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -195,7 +195,14 @@
                     </x-custom-form>
                 </x-card>
                 <x-card title="Jadwal Kuliah" show-title="true">
-                    @livewire('JadwalKuliahTable')
+                    @if (session()->has('jadwalKuliah'))
+                        <h1>Preview Penjadwalan</h1>
+                        @livewire('JadwalDraftTable')
+                        <input type="text" hidden name="save_to_db" value="1">
+                        <x-button type="submit" class="bg-green-300 text-black">Simpan</x-button>
+                    @else
+                        @livewire('JadwalKuliahTable')
+                    @endif
                 </x-card>
             </div>
         </div>

@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\MataKuliah;
+use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
@@ -19,13 +21,13 @@ use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 final class MatakuliahTable extends PowerGridComponent
 {
     use WithExport;
+    public string $primaryKey = "mata_kuliahs.id";
+    public string $sortField = 'mata_kuliahs.id';
+    public string $exportField = 'mata_kuliahs.id';
 
     public function setUp(): array
     {
         return [
-            // Exportable::make('export')
-            //     ->striped()
-            //     ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -34,7 +36,14 @@ final class MatakuliahTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return MataKuliah::query();
+        return MataKuliah::query()
+            ->join('jurusans', 'mata_kuliahs.jurusan_id', '=', 'jurusans.id')
+            ->select(
+                'mata_kuliahs.id as id',
+                'mata_kuliahs.nama_id as nama',
+                'mata_kuliahs.status as status',
+                'jurusans.nama_idn as jurusan'
+            );
     }
 
     public function relationSearch(): array
@@ -45,43 +54,32 @@ final class MatakuliahTable extends PowerGridComponent
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
-            ->add('id')
-            ->add('created_at');
+            ->add('status')
+            ->add('nama')
+            ->add('id');
     }
 
     public function columns(): array
     {
         return [
-            Column::action(''),
-
+            Column::action('')->visibleInExport(false),
+            Column::make('ID', 'id'),
             Column::add()
                 ->title('status')
                 ->field('status')
                 ->toggleable(true, 'YA', 'TIDAK')
-                ->contentClassField("bg-indigo-100")->visibleInExport(false),
-
+                ->visibleInExport(false),
             Column::add()
-                ->title("nama ID")
-                ->field("nama_id")
+                ->title("nama")
+                ->field("nama")
                 ->editOnClick(hasPermission: true, saveOnMouseOut: true)
                 ->sortable(),
-
-            Column::add()
-                ->title("Nama EN")
-                ->field("nama_en")
-                ->editOnClick(hasPermission: true, saveOnMouseOut: true)
-                ->sortable(),
-
-            Column::add()
-                ->title("dosen")
-                ->field("dosen_id")
-                ->editOnClick(hasPermission: true, saveOnMouseOut: true)
-                ->sortable(),
+            Column::add()->make("jurusan", "jurusan")
         ];
     }
 
     #[\Livewire\Attributes\On('delete')]
-    public function delete($rowId): void
+    public function delete(string $rowId): void
     {
         MataKuliah::destroy($rowId);
     }

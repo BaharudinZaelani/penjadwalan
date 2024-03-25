@@ -54,7 +54,6 @@ final class JadwalKuliahTable extends PowerGridComponent
                 'mata_kuliahs.nama_id as matakuliah',
                 'semesters.nama as semester',
             ]);
-
         return $query;
     }
 

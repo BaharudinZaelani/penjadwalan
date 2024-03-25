@@ -19,7 +19,7 @@ class MataKuliahFactory extends Factory
         return [
             "nama_id" => $this->faker->name(),
             "nama_en" => $this->faker->name(),
-            "dosen_id" => 1,
+            "jurusan_id" => rand(0, 5),
             "kode_kurikulum" => 1,
             "status" => $this->faker->boolean()
         ];

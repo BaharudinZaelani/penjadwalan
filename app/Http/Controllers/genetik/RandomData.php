@@ -5,6 +5,7 @@ namespace App\Http\Controllers\genetik;
 use App\Models\MataKuliah;
 use App\Models\Ruangan;
 use App\Models\Waktu;
+use Exception;
 
 class RandomData
 {
@@ -126,6 +127,10 @@ class RandomData
     private static function randomRuangan(Ruangan $ruangan): int
     {
         $dataRuangan = $ruangan::where("status", true)->get()->toArray();
+        if (empty($dataRuangan)) {
+            throw new Exception("Ruangan Kosong !");
+            return 0;
+        }
         return $dataRuangan[rand(0, count($dataRuangan) - 1)]["id"];
     }
 }
