@@ -14,4 +14,14 @@ class JadwalKuliah extends Model
     {
         return $this->hasOne(Ruangan::class, "id", "ruangan_id");
     }
+
+    function waktu()
+    {
+        return $this->hasOne(Waktu::class, "id", "waktu_id");
+    }
+
+    function matkul()
+    {
+        return $this->hasOne(MataKuliah::class, "id", "matkul_id");
+    }
 }

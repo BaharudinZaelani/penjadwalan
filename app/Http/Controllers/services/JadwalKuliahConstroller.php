@@ -17,6 +17,8 @@ class JadwalKuliahConstroller extends Controller
         try {
             if ($request->has('save_to_db') && session()->has('jadwalKuliah')) {
                 JadwalKuliah::insert(session("jadwalKuliah"));
+                session()->remove("jadwalKuliah");
+                return back()->with("success", "Jadwal Berhasil disimpan !");
             }
             if (isset($request->semester)) {
                 $semesterCount = $request->semester == "all" ? Semester::count() : 1;

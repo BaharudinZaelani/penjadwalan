@@ -4,6 +4,7 @@ namespace App\Http\Controllers\genetik;
 
 use App\Models\MataKuliah;
 use App\Models\Ruangan;
+use App\Models\Semester;
 use App\Models\Waktu;
 use Exception;
 
@@ -102,14 +103,18 @@ class RandomData
         foreach ($matakuliah as $row) {
             $populasi[] = [
                 "id" => $row->id,
-                "ruangan_id" => RandomData::randomRuangan($ruangan),
-                "hari" => RandomData::randomHari(),
-                "waktu_id" => RandomData::randomWaktu($waktu),
+                "ruangan_id" => self::randomRuangan($ruangan),
+                "hari" => self::randomHari(),
+                "waktu_id" => self::randomWaktu($waktu),
                 "matkul_id" => $row->id,
-                "semester_id" => 1
+                "semester_id" => self::randomSemester()
             ];
         }
         return $populasi;
+    }
+    static function randomSemester(): int
+    {
+        return rand(1, Semester::count());
     }
     private static function randomHari(): string
     {

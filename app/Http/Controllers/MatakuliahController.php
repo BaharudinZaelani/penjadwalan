@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\genetik\Genetik;
 
 class MatakuliahController extends Controller
 {
@@ -16,7 +15,7 @@ class MatakuliahController extends Controller
         $kurikulum = $this->kurikulum->where("status", true)->get();
         $semester = $this->semester->all();
 
-        return view("matkul", compact([
+        return view("matkul/matkul", compact([
             "dosen",
             "gedung",
             "ruangan",

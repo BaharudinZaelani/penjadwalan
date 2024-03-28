@@ -16,28 +16,26 @@ class Fitness
 
         return $fitness;
     }
-    static function countConflict(array $data): int
+    static function countConflict($jadwal)
     {
-        $jadwalBentrok = 0;
+        $conflicts = 0;
+        $checked = []; // Array untuk menyimpan jadwal yang sudah diperiksa
 
-        // Loop melalui setiap jadwal
-        for ($i = 0; $i < count($data); $i++) {
-            $currentJadwal = $data[$i];
-
-            // Loop melalui jadwal-jadwal selanjutnya
-            for ($j = $i + 1; $j < count($data); $j++) {
-                $otherJadwal = $data[$j];
-
-                // Memeriksa apakah hari dan waktu sama
-                if ($currentJadwal['hari'] === $otherJadwal['hari'] && $currentJadwal['waktu_id'] === $otherJadwal['waktu_id']) {
-                    // Memeriksa apakah ruangan sama
-                    if ($currentJadwal['ruangan_id'] === $otherJadwal['ruangan_id']) {
-                        $jadwalBentrok++; // Ruangan berbeda, ada bentrok
+        foreach ($jadwal as $key1 => $schedule1) {
+            foreach ($jadwal as $key2 => $schedule2) {
+                if (!in_array($key1, $checked) && !in_array($key2, $checked) && $key1 != $key2) {
+                    if (
+                        $schedule1['hari'] == $schedule2['hari'] &&
+                        $schedule1['waktu_id'] == $schedule2['waktu_id']
+                    ) {
+                        if ($schedule1['ruangan_id'] == $schedule2['ruangan_id']) {
+                            $conflicts++;
+                        }
                     }
                 }
             }
+            $checked[] = $key1;
         }
-
-        return $jadwalBentrok;
+        return $conflicts;
     }
 }

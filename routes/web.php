@@ -6,6 +6,7 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\PreviewMatakuliahController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\services\JurusanService;
@@ -129,6 +130,9 @@ Route::middleware([
         // View
         Route::controller(MatakuliahController::class)->group(function () {
             Route::get("/", "index")->name("matkul-index");
+        });
+        Route::controller(PreviewMatakuliahController::class)->group(function () {
+            Route::get("/preview", "index")->name("matkul-preview");
         });
 
         // Services

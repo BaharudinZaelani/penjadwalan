@@ -194,12 +194,14 @@
                         </x-slot>
                     </x-custom-form>
                 </x-card>
-                <x-card title="Jadwal Kuliah" show-title="true">
+                <x-card title="Draft Jadwal" show-title="true">
                     @if (session()->has('jadwalKuliah'))
-                        <h1>Preview Penjadwalan</h1>
                         @livewire('JadwalDraftTable')
-                        <input type="text" hidden name="save_to_db" value="1">
-                        <x-button type="submit" class="bg-green-300 text-black">Simpan</x-button>
+                        <form action="{{ route('jadwal-insert') }}" method="POST">
+                            @csrf
+                            <input type="text" hidden name="save_to_db" value="1">
+                            <x-button type="submit" class="bg-green-600 text-black">Simpan</x-button>
+                        </form>
                     @else
                         @livewire('JadwalKuliahTable')
                     @endif

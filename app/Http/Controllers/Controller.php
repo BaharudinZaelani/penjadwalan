@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Gedung;
+use App\Models\JadwalKuliah;
 use App\Models\Jurusan;
 use App\Models\Kelas;
 use App\Models\Kurikulum;
@@ -29,6 +30,7 @@ class Controller extends BaseController
         protected MataKuliah $mataKuliah,
         protected Waktu $waktu,
         protected Semester $semester,
+        protected JadwalKuliah $jadwalKuliah
     ) {
     }
 }
